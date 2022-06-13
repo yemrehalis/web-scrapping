@@ -6,9 +6,10 @@ R = requests.get(Url)
 Soup = BeautifulSoup(R.text, "html5lib")
 List = Soup.find("tbody", {"class": "lister-list"}).find_all("tr")
 
-for Film in List:
+for Movie in List:
 
-    Name = Film.find("td", {"class": "titleColumn"}).a.text
-    Tarih = Film.find("td", {"class": "titleColumn"}).span.text.strip("()")
-    Rating = Film.find("td", {"class": "ratingColumn imdbRating"}).text.strip()
-    print(f"Film Adı: {Name}  Tarih: {Tarih}  Rating: {Rating}")
+    Name = Movie.find("td", {"class": "titleColumn"}).a.text
+    Date = Movie.find("td", {"class": "titleColumn"}).span.text.strip("()")
+    Rating = Movie.find(
+        "td", {"class": "ratingColumn imdbRating"}).text.strip()
+    print(f"Movie --> {Name}  Date --> {Date}  Rating --> {Rating}")
